@@ -20,11 +20,15 @@ def generate_frames():
     camera = cv2.VideoCapture(0)
     while True:
         start_time = time.time()
+        # camera.set(cv2.CAP_PROP_FPS, 30)
+
         success, frame = camera.read()
         if not success:
             break
         else:
-            ret, buffer = cv2.imencode('.jpg', frame)
+            # ret, buffer = cv2.imencode('.jpg', frame)
+            ret, buffer = cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), 80])
+
             frame = buffer.tobytes()
             # Concatenate frame and yield for streaming
             yield (b'--frame\r\n'
