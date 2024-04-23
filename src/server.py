@@ -1,15 +1,16 @@
-# Import necessary modules
-from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
-from aiortc import RTCPeerConnection, RTCSessionDescription
 import cv2
-import json
+import time
 import uuid
 import asyncio
 import logging
-import time
+from flask_cors import CORS
+from aiortc import RTCPeerConnection, RTCSessionDescription
+from flask import Flask, render_template, Response, request, jsonify, redirect, url_for
 
 # Create a Flask app instance
 app = Flask(__name__, static_url_path='/static')
+
+CORS(app)
 
 # Set to keep track of RTCPeerConnection instances
 pcs = set()
