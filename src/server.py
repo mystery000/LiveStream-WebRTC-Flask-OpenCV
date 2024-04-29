@@ -28,7 +28,7 @@ def generate_frames():
             break
         else:
             # ret, buffer = cv2.imencode('.jpg', frame)
-            ret, buffer = cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), 70])
+            ret, buffer = cv2.imencode('.jp2', frame, [int(cv2.IMWRITE_JPEG2000_QUALITY), 70])
 
             frame = buffer.tobytes()
             # Concatenate frame and yield for streaming
